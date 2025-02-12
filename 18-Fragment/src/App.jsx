@@ -3,6 +3,8 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import FoodItems from "./component/FoodItems";
 import ErrorMessage from "./component/ErrorMessage";
+import Container from "./component/Container";
+
 
 
 // function App() {
@@ -25,7 +27,7 @@ import ErrorMessage from "./component/ErrorMessage";
 
 function App() {
   //
-   let foodItem = ["Daal", "Green Vegitable", "Salad", "Roti", "Milk"];
+   let foodItem = ["Daal", "Green Vegitable", "Salad", "Roti", "Milk","Ghee","Chana"];
   // if(foodItem.length===0){
   //   return <h3>I am still Hungry.</h3>
   // }
@@ -36,13 +38,20 @@ function App() {
   // let emptyMessage = foodItem.length === 0 ? <h3>I am still Hungry.</h3> : null;
 
   return (
-    <>
-      <h1>Healthy Foods</h1>
+  <>
+    <Container>
+      <h1 className="food-heading">Healthy Foods</h1>
 
       <ErrorMessage items={foodItem}></ErrorMessage>
       <FoodItems items={foodItem}> </FoodItems>
+    </Container>
 
-    </>
+  {/* <Container>
+    <p>Above is the list of healthy foods that are good for your health and well being.</p>
+  </Container> */}
+  
+  </>
+
   );
 }
 
