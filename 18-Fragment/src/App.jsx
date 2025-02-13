@@ -4,8 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import FoodItems from "./component/FoodItems";
 import ErrorMessage from "./component/ErrorMessage";
 import Container from "./component/Container";
+import FoodInput from "./component/FoodInput";
 
-
+import { useState } from "react";
 
 // function App() {
 //   return (
@@ -27,7 +28,29 @@ import Container from "./component/Container";
 
 function App() {
   //
-   let foodItem = ["Daal", "Green Vegitable", "Salad", "Roti", "Milk","Ghee","Chana"];
+  //  let foodItem = ["Daal", "Green Vegitable", "Salad", "Roti", "Milk","Ghee","Chana"];
+
+  // let [textToShow, setTextState] = useState();
+
+  let [foodItems, setFoodItems] = useState([]);
+
+  // let textStateArr=useState("food item entered by users"); {/*isme hamesha do hi value*/}
+
+  // let textToShow=textStateArr[0];
+  // // let textStateVal=textStateArr[0];
+
+  // // let textStateMethod=textStateArr[1];
+  // let setTextState=textStateArr[1];
+
+  const onKeyDown = (event) => {
+    if (event.key === "Enter") {
+      let newFoodItem = event.target.value;
+      event.target.value="";
+      let newItems=[...foodItems ,newFoodItem];
+      setFoodItems(newItems);
+    }
+  };
+
   // if(foodItem.length===0){
   //   return <h3>I am still Hungry.</h3>
   // }
@@ -38,24 +61,22 @@ function App() {
   // let emptyMessage = foodItem.length === 0 ? <h3>I am still Hungry.</h3> : null;
 
   return (
-  <>
-    <Container>
-      <h1 className="food-heading">Healthy Foods</h1>
+    <>
+      <Container>
+        <h1 className="food-heading">Healthy Foods</h1>
 
-      <ErrorMessage items={foodItem}></ErrorMessage>
-      <FoodItems items={foodItem}> </FoodItems>
-    </Container>
+        <FoodInput handleKeyDown={onKeyDown}> </FoodInput>
 
-  {/* <Container>
+        <ErrorMessage items={foodItems}></ErrorMessage>
+        {/* <p>{textToShow}</p> */}
+        <FoodItems items={foodItems}> </FoodItems>
+      </Container>
+
+      {/* <Container>
     <p>Above is the list of healthy foods that are good for your health and well being.</p>
   </Container> */}
-  
-  </>
-
+    </>
   );
 }
 
 export default App;
-
-
-
