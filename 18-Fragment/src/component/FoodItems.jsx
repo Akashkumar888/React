@@ -4,7 +4,16 @@ import Item from "./Item";
 const FoodItems = (props) => {
   let { items } = props; // Corrected from foodItems to items
   
+
   let [activeItems,setActiveItems]=useState([]);
+
+
+  
+  let onlyBuyBotton=(item,event)=>{
+  let newItem=[...activeItems,item];
+  setActiveItems(newItem);
+  }
+  
 
   return (
     <ul className="list-group">
@@ -13,8 +22,7 @@ const FoodItems = (props) => {
         key={item} 
         foodItem={item}
         bought={activeItems.includes(item)}
-        handleBuyButtonClicked={()=>console.log(`${item} being bought`)}
-        
+        handleBuyButtonClicked={(event)=> onlyBuyBotton(item,event)}
         
         ></Item>
       ))}
@@ -23,4 +31,6 @@ const FoodItems = (props) => {
 };
 
 export default FoodItems;
+
+
 
