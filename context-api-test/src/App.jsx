@@ -5,6 +5,8 @@ import TodoItems from "./component/TodoItems";
 import "./apnabhai.css";
 import { useState } from "react";
 import WelcomeMessage from "./component/WelcomeMessage";
+
+import TodoItemsContext from "./store/todo-items-store";
 function App() {
   const [todoItems, setTodoItems] = useState([]);
 
@@ -36,16 +38,21 @@ const handleDeleteItem=(todoItemName)=>{
 }
 
   return (
+    
+    <TodoItemsContext.Provider value={todoItems}>
+
     <div className="todo-container text-center">
       {" "}
       {/* Bootstrap-centered container */}
       <AppName />
       <AddTodo onNewItem={handleNewItem} />
-      <WelcomeMessage  todoItems={todoItems}   />
+      <WelcomeMessage />
 
-      <TodoItems todoItems={todoItems} onDeleteClick={handleDeleteItem} ></TodoItems>
+      <TodoItems onDeleteClick={handleDeleteItem} ></TodoItems>
       
     </div>
+
+    </TodoItemsContext.Provider>
   );
 }
 
