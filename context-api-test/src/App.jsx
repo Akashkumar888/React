@@ -12,46 +12,34 @@ function App() {
 
 
 
-  const handleNewItem = (itemName, itemDueDate) => {
-    // Multi-line arrow function
-    // setTodoItems((currentValue)=>{
-    //  const newTodoItems = [
-    //   ...currentValue,
-    //   { name: itemName, dueDate: itemDueDate },
-    // ];
-    // return newTodoItems;
-    // });
-
-    // you can remove the {} and return if your function is a single return expression.
-    // ✅ Version 2: Single-line return (cleaner)
+  const addNewItem = (itemName, itemDueDate) => {
     setTodoItems((currentValue)=>[
       ...currentValue,
       { name: itemName, dueDate: itemDueDate },
     ]);
-
+  setTodoItems(newTodoItems);
   };
 
 
-const handleDeleteItem=(todoItemName)=>{
+const deleteItem=(todoItemName)=>{
   const newTodoItems=todoItems.filter(item=>(item.name !==  todoItemName));
   setTodoItems(newTodoItems);
 }
 
   return (
-    
-    <TodoItemsContext.Provider value={todoItems}>
+    // jb key aur value same ho js me single value bana kr daal sakte hai 
+    <TodoItemsContext.Provider value={{
+      todoItems:todoItems,
+      addNewItem:addNewItem,
+      deleteItem:deleteItem
+      }}>
 
     <div className="todo-container text-center">
-      {" "}
-      {/* Bootstrap-centered container */}
       <AppName />
-      <AddTodo onNewItem={handleNewItem} />
+      <AddTodo  />
       <WelcomeMessage />
-
-      <TodoItems onDeleteClick={handleDeleteItem} ></TodoItems>
-      
+      <TodoItems ></TodoItems>
     </div>
-
     </TodoItemsContext.Provider>
   );
 }
