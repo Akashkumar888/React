@@ -2,15 +2,12 @@
 
 const Sidebar = ({ selectedTab,setSelectedTb }) => {
 
-  const handleOnClick=(tabName)=>{
-    selectedTab(tabName);
-  }
-
+  
   
   return (
     <div
       className="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white sidebar"
-      style={{ width: "280px" }}
+      style={{ width: "180px" }}
     >
       <a
         href="/"
@@ -28,7 +25,10 @@ const Sidebar = ({ selectedTab,setSelectedTb }) => {
       </a>
       <hr className="border-light" />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
+        <li className="nav-item " 
+        onClick={()=>{
+          setSelectedTb('Home')}
+          }>
           <a
             href="#"
             className={`nav-link text-white  ${
@@ -46,7 +46,10 @@ const Sidebar = ({ selectedTab,setSelectedTb }) => {
             Home
           </a>
         </li>
-        <li>
+        <li 
+        onClick={()=>{
+          setSelectedTb('Create Post')}
+          }>
           <a
             href="#"
             className={`nav-link text-white ${
