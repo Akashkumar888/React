@@ -41,7 +41,7 @@ const addPost = (userId, postTitle, postBody, reactions, tags) => {
     id: Date.now(),
     title: postTitle,
     body: postBody,
-    reactions: reactions,
+    reaction: reactions,
     userId :userId,
     tags:tags
      }
@@ -80,7 +80,7 @@ const DEFAULT_POST_LIST=[
     id:'1',
     title:"Going to Mumbai",
     body:"Hii Friends,I am going to Mumbai for my vacations.Hope to enjoy a lot.Peace out.",
-    reactions:2,
+    reaction:2,
     userId:"user-9",
     tags:["vacation",'Mumbai','Enjoying']
   },
@@ -89,7 +89,7 @@ const DEFAULT_POST_LIST=[
     id:'2',
     title:"pass ho gaye bhai",
     body:"4 saal ki masti ke baad pass ho gaye bhai.Hard to believe.",
-    reactions:15,
+    reaction:15,
     userId:"user-12",
     tags:['Graduating','unbelievable']
   }
