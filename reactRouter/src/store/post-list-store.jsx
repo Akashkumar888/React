@@ -1,12 +1,11 @@
 
 
-import {createContext, useReducer,useState,useEffect} from 'react';
+import {createContext, useReducer} from 'react';
 
 
 
 const PostList=createContext({
   postList:[],
-  fetching:false,
   addPost: ()=>{},
   deletePost: ()=> {}
 });
@@ -37,7 +36,6 @@ newPostList=action.payload.posts;
 export const PostListProvider=({children})=>{
 const [postList,dispatchPostList]= useReducer(postListReducer,[]);
 
-const [fetching,setFetching] =useState(false);
 
 
 
@@ -71,25 +69,6 @@ const deletePost=(postId)=>{
 };
 
 
-useEffect(()=>{
-  setFetching(true);
-  const controller=new AbortController();
-  const signal=controller.signal;
-
-  fetch('https://dummyjson.com/posts',{signal})
-  .then(res => res.json())
-  .then(data=>{
-    addInitialPosts(data.posts);
-    setFetching(false);
-    
-  });
-
-    // return ()=>{
-    //   controller.abort();
-    // }
-  
-},[]);
- 
 
 
 return (
@@ -97,7 +76,6 @@ return (
 value={
  { 
   postList,
-  fetching,
   addPost,
   deletePost
 }
