@@ -1,0 +1,44 @@
+.full {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f6f9fc, #e9eff5);
+  font-family: Arial, sans-serif;
+}
+
+.add-sub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.add-sub svg {
+  cursor: pointer;
+  color: #4a90e2;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.add-sub svg:hover {
+  transform: scale(1.2);
+  color: #1c6dd0;
+}
+
+input[type="number"] {
+  width: 100px;
+  padding: 8px 12px;
+  font-size: 18px;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="number"]:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+}
